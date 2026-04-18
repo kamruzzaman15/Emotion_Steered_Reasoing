@@ -1,0 +1,84 @@
+# Emotion-Steered Mitigation of Biased Reasoning in Large Language Models
+
+This repository contains code for studying whether biased reasoning in large language models (LLMs) is associated with interpretable emotion-like internal representations, and whether those representations can be used for mitigation. The project probes hidden states across multiple bias benchmarks and introduces an activation-steering method that reduces biased behavior while preserving general emotional reasoning ability.
+
+## Overview
+
+Large language models often produce biased outputs, such as preferring stereotype-consistent continuations, making stereotyped guesses in ambiguous settings, or generating different responses under demographic prompts. Most prior work measures these behaviors only at the output level. This project studies the internal side of the problem.
+
+The main idea is to:
+1. build model-specific emotion vectors from hidden states,
+2. measure how biased and non-biased outputs align with those emotion-like directions,
+3. learn a supervised bias direction in emotion space, and
+4. steer the model away from the harmful part of that direction while preserving a protected subspace needed for general emotion reasoning.
+
+## Main Contributions
+
+- Probes hidden-state representations of LLMs using interpretable emotion-like directions
+- Analyzes bias behavior across multiple benchmarks:
+  - StereoSet
+  - GenAssocBias
+  - BBQ
+  - BOLD
+- Studies whether emotion-space patterns can predict biased model behavior
+- Introduces a protected activation-steering mitigation method
+- Aims to reduce bias while preserving broader emotional competence and task performance
+
+## Method Summary
+
+### 1. Emotion Vector Construction
+We construct model-specific emotion vectors by prompting the model to generate short stories that evoke different emotions. Hidden states from these generations are averaged and centered against a global mean to obtain normalized emotion directions.
+
+### 2. Bias Probing
+We project hidden states from bias benchmarks onto the emotion vectors and compare projection patterns across conditions such as:
+- stereotype vs anti-stereotype completions,
+- stereotyped guesses vs uncertainty-preserving answers,
+- before-generation vs after-generation representations.
+
+### 3. Bias Direction Learning
+Using emotion projection features, we train a lightweight classifier to separate biased and non-biased behavior. The learned weights are mapped back into hidden space to form a bias direction.
+
+### 4. Protected Steering
+Instead of removing the full bias direction, we preserve the part that overlaps with a protected emotion subspace required for general emotional reasoning. Only the residual harmful direction is used for mitigation during inference.
+
+## Repository Goals
+
+This repository is intended to support:
+- interpretability analysis of LLM internal states,
+- bias diagnosis using emotion-like representations,
+- activation steering experiments for mitigation,
+- reproducible benchmarking across multiple datasets and models.
+
+## Datasets
+
+The project is designed around the following benchmarks:
+
+- **StereoSet**: measures stereotypical preference in sentence completion
+- **GenAssocBias**: evaluates generative association bias
+- **BBQ**: tests social bias in question answering, especially under ambiguity
+- **BOLD**: analyzes open-ended generation across demographic prompts
+
+Please obtain each dataset from its official source and follow the original licensing and usage terms.
+
+## Planned / Expected Repository Structure
+
+```text
+.
+├── data/
+│   ├── stereoset/
+│   ├── genassocbias/
+│   ├── bbq/
+│   └── bold/
+├── src/
+│   ├── emotion_vectors/
+│   ├── probing/
+│   ├── steering/
+│   ├── evaluation/
+│   └── utils/
+├── configs/
+├── notebooks/
+├── scripts/
+├── results/
+├── figures/
+├── requirements.txt
+└── README.md
