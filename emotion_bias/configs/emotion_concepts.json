@@ -1,0 +1,58 @@
+{
+    "description": "40 emotion concepts for probing internal affect during biased reasoning.",
+    "num_stories_per_emotion": 20,
+    "emotions": {
+        "confidence_cluster": [
+            "confident",
+            "certain",
+            "assured",
+            "decisive",
+            "comfortable"
+        ],
+        "uncertainty_cluster": [
+            "uncertain",
+            "doubtful",
+            "hesitant",
+            "conflicted",
+            "ambivalent"
+        ],
+        "positive_valence_cluster": [
+            "happy",
+            "satisfied",
+            "pleased",
+            "content",
+            "proud",
+            "relieved",
+            "enthusiastic",
+            "loving",
+            "hopeful"
+        ],
+        "negative_valence_cluster": [
+            "sad",
+            "guilty",
+            "ashamed",
+            "uncomfortable",
+            "uneasy",
+            "troubled",
+            "annoyed",
+            "fear"
+        ],
+        "arousal_cluster": [
+            "anxious",
+            "nervous",
+            "tense",
+            "agitated",
+            "calm",
+            "relaxed",
+            "at ease"
+        ],
+        "social_cluster": [
+            "empathetic",
+            "indifferent",
+            "defensive",
+            "agreeable",
+            "dismissive",
+            "sympathetic"
+        ]
+    }
+}
