@@ -12,7 +12,7 @@ The main idea is to:
 3. learn a supervised bias direction in emotion space, and
 4. steer the model away from the harmful part of that direction while preserving a protected subspace needed for general emotion reasoning.
 
-## Main Contributions
+## Main Contributions ##
 
 - Probes hidden-state representations of LLMs using interpretable emotion-like directions
 - Analyzes bias behavior across multiple benchmarks:
