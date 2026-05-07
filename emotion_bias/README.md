@@ -10,7 +10,7 @@ pip install -r requirements.txt
 # 3. Download datasets
 python scripts/download_datasets.py
 
-# 4. Extract emotion vectors from Gemma-2-2B
+# 4. Extract emotion vectors from Gemma-2-2B (as a example)
 python scripts/extract_emotion_vectors.py --model google/gemma-2-2b-it --output outputs/emotion_vectors.pt
 
 # 5. Run bias probing on all three datasets
